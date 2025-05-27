@@ -1,0 +1,15 @@
+/* 네비게이션 메뉴 아이템 호버 효과 */
+.nav-menu-item {
+  transition: color 0.3s ease !important;
+  color: #212529 !important; /* Bootstrap의 text-dark와 동일 */
+}
+
+.nav-menu-item:hover {
+  color: #0d6efd !important; /* Bootstrap의 primary 색상 */
+  text-decoration: none !important;
+}
+
+.nav-menu-item:focus {
+  color: #0d6efd !important;
+  text-decoration: none !important;
+} 
