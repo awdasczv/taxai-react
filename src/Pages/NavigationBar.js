@@ -1,5 +1,5 @@
 import { Container, Row, Col, Nav, Form, Button, InputGroup } from "react-bootstrap";
-import logo from '../image/TAXAI_logo.svg'
+import logo from '../image/taxai-logo.svg'
 import './NavigationBar.css'; // CSS 파일 추가
 
 
