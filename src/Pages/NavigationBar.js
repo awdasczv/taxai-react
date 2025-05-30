@@ -25,7 +25,7 @@ function NavigationBar() {
                 <Nav.Link
                   key={i}
                   href="#"
-                  className="px-2 text-dark nav-menu-item">
+                  className="nav-menu-item">
                   {item}
                 </Nav.Link>
               ))}

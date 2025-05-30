@@ -2,9 +2,9 @@ import './App.css';
 
 import React from "react";
 import { Container, Row, Col, Nav, Form, Button, InputGroup } from "react-bootstrap";
-import NavigationBar from './Pages/NavigationBar';
-import BasicInfo from './Pages/BasicInfo';
-import OwnedHouseInfo from './Pages/OwnedHouseInfo';
+import NavigationBar from './pages/NavigationBar';
+import BasicInfo from './pages/BasicInfo';
+import OwnedHouseInfo from './pages/OwnedHouseInfo';
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
       <NavigationBar/>
 
       {/* 본문 */}
-      <Container className="mt-5 mb-5" style={{backgroundColor: '#f6f6f8'}}>
+      <Container className="pt-5 mb-5 ps-5 pe-5" style={{backgroundColor: '#f6f6f8'}}>
         <Row>
           {/* 입력 영역 */}
           <Col md={8}>
