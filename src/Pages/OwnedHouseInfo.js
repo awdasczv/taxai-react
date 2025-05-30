@@ -1,8 +1,8 @@
-import {  Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Form } from 'react-bootstrap';
 
 function OwnedHouseInfo() {
-    const inputFields = ["주소", "양도 시 부동산 종류", "취득 당시 부동산 종류", "취득 확인", "보유 지분", "양도가액", "취득가액"];
-    const dropdownOptions = [1, 2, 3, 4];
+    const inputFields = ['주소', '양도 시 부동산 종류', '취득 당시 부동산 종류', '취득 확인', '보유 지분', '양도가액', '취득가액',];
+    const dropdownOptions = [1, 2, 3, 4,];
 
     return (
         <div>

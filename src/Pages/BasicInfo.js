@@ -1,8 +1,8 @@
-import {Row, Col, Form} from "react-bootstrap";
-import InputLabel from "../components/FieldTitle";
-import { useState } from "react";
+import { Row, Col, Form } from 'react-bootstrap';
+import InputLabel from '../components/FieldTitle';
+import { useState } from 'react';
 
-function BasicInfo(){
+function BasicInfo() {
   
   const houseOptions = [
     { value: '1', label: '1세대 1주택' },
@@ -12,7 +12,7 @@ function BasicInfo(){
 
   const [selectedHouseOption, setSelectedHouseOption] = useState('');
   
-  return(
+  return (
     <div>
       {/* 1. 기초정보 */}
       <h5 className="mb-3">1. 기초정보 <span className="text-danger">*</span></h5>
@@ -38,7 +38,7 @@ function BasicInfo(){
         </Row>
       </Form>
     </div>  
-  )
+  );
 }
 
 export default BasicInfo;
