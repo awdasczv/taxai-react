@@ -19,8 +19,12 @@ function NavigationBar() {
           </Col>
 
           {/* 네비게이션 메뉴들 입니다. */}
-          <Col>
-            <Nav className="d-flex">
+          {
+            
+          }
+          
+          <Col className="d-flex align-items-center">
+            <Nav className="d-none d-xl-flex">
               {navMenu.map((item, i) => (
                 <Nav.Link
                   key={i}
@@ -30,12 +34,14 @@ function NavigationBar() {
                 </Nav.Link>
               ))}
             </Nav>
-          </Col>
 
-          {/* Contact us 부분입니다. */}
-          <Col xs="auto">
+            <div className="flex-grow-1" />
+
+            <Col xs="auto">
             <Button variant="outline-primary">CONTACT US</Button>
           </Col>
+          </Col>
+
         </Row>
       </Container>
     </div>        
