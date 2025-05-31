@@ -21,10 +21,14 @@ export default function App() {
 
             {/* 1. 기초정보 */}
             <BasicInfo/>
+            
 
             {/* 2. 보유주택 기본정보 */}
+            <hr />
             <OwnedHouseInfo/>
 
+            <hr />
+            
             <Button variant="primary" className="w-100">계산결과 확인하기</Button>
           </Col>
 
