@@ -17,13 +17,13 @@ function BasicInfo() {
       {/* 1. 기초정보 */}
       <h5 className="mb-3">1. 기초정보 <span className="text-danger">*</span></h5>
       
-      <Form className="mb-4">
+      <Form className="mb-4"  >
         <Row className="mb-3">
           <Col xs="auto">
             <InputLabel text="현재 보유주택 수"  />
           </Col>
           <Col>
-            <Form.Select value={selectedHouseOption} onChange={(e) => setSelectedHouseOption(e.target.value)} >
+            <Form.Select style={{fontSize: '0.9rem'}} value={selectedHouseOption} onChange={(e) => setSelectedHouseOption(e.target.value)} >
               <option value="" disabled >보유주택 수를 선택하세요</option>
               {houseOptions.map(e => <option key={e.value} >{e.label}</option>)}
             </Form.Select>
@@ -34,7 +34,7 @@ function BasicInfo() {
             <InputLabel text="양도 예정일"  />
           </Col>
           <Col>
-            <Form.Control type="date" />
+            <Form.Control type="date" style={{fontSize: '0.9rem'}} />
           </Col>
         </Row>
       </Form>

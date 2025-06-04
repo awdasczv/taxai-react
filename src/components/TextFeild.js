@@ -10,6 +10,7 @@ function TextFeild({placeholder,type}) {
             <Form.Control 
             placeholder={placeholder} 
             value={inputValue} 
+            style={{fontSize: '0.9rem'}}
             onChange={(e) => {
                 if(type==='money') {    
                     const inputNumbers = e.target.value.replace(/\D/g, '');

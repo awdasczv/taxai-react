@@ -6,13 +6,17 @@ function OxChoice() {
 
     return (
     <ButtonGroup className="w-100">
-        <Button
+        <Button 
+            style={{fontSize: '0.9rem'}}
+            className="me-2 rounded-start rounded-end"
             variant={inputValue === 'O' ? 'primary' : 'outline-primary'}
             onClick={() => setInputValue('O')}
             >
             O
         </Button>
         <Button
+            style={{fontSize: '0.9rem'}}
+            className="ms-2 rounded-start rounded-end"
             variant={inputValue === 'X' ? 'danger' : 'outline-danger'}
             onClick={() => setInputValue('X')}
             >
