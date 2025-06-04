@@ -23,7 +23,10 @@ function BasicInfo() {
             <InputLabel text="현재 보유주택 수"  />
           </Col>
           <Col>
-            <Form.Select style={{fontSize: '0.9rem'}} value={selectedHouseOption} onChange={(e) => setSelectedHouseOption(e.target.value)} >
+            <Form.Select 
+              style={{fontSize: '0.9rem'}} 
+              value={selectedHouseOption} 
+              onChange={(e) => setSelectedHouseOption(e.target.value)} >
               <option value="" disabled >보유주택 수를 선택하세요</option>
               {houseOptions.map(e => <option key={e.value} >{e.label}</option>)}
             </Form.Select>

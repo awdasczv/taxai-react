@@ -1,9 +1,13 @@
 import { Form } from "react-bootstrap";
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUserInput, printUserInput } from '../store';
 
-function DropDown({dropdownOptions, placeholder}) {
+function DropDown({label, dropdownOptions, placeholder}) {
 
   const [selectedOption, setSelectedOption] = useState('');
+  const selectedOptionStore = useSelector(state => state.userInput.value);
+  const dispatch = useDispatch();
 
   const parsedOptions = parseStringToList(dropdownOptions);
 
@@ -11,7 +15,11 @@ function DropDown({dropdownOptions, placeholder}) {
     <Form.Select 
     value={selectedOption}
     style={{fontSize: '0.9rem'}}
-     onChange={(e) => setSelectedOption(e.target.value)} >
+     onChange={(e) => {
+      setSelectedOption(e.target.value);
+      dispatch(updateUserInput({label: label, value: e.target.value}))
+      dispatch(printUserInput())
+     }} >
       <option value="" disabled >{placeholder}</option>
       {parsedOptions.map(e => <option key={e} value={e}>{e}</option>)}
     </Form.Select>

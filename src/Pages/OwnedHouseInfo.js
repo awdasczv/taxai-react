@@ -17,7 +17,6 @@ function OwnedHouseInfo() {
           skipEmptyLines: true,
           complete: function (results) {
             setInputCommonFeild(results.data);
-            console.log(results.data);
           }
         });
       });
@@ -30,13 +29,13 @@ function OwnedHouseInfo() {
 
         <Form className="mb-4">
           {inputCommonFeild.map((e, i) => (
-            <Row className="mb-3">
+            <Row key={i} className="mb-3">
               <Col xs="auto">
                 <InputLabel text={e.label} required={e.required} />
               </Col>
               <Col>
-                <Form.Group key={i} className="mb-1">
-                  <InputForm feild={e} key={i} />
+                <Form.Group className="mb-1">
+                  <InputForm feild={e} />
                 </Form.Group>
               </Col>
             </Row>
