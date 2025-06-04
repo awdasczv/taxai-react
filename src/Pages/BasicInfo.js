@@ -16,6 +16,7 @@ function BasicInfo() {
     <div>
       {/* 1. 기초정보 */}
       <h5 className="mb-3">1. 기초정보 <span className="text-danger">*</span></h5>
+      
       <Form className="mb-4">
         <Row className="mb-3">
           <Col xs="auto">
