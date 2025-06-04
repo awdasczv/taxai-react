@@ -1,5 +1,5 @@
 import { Row, Col, Form } from 'react-bootstrap';
-import InputLabel from '../components/FieldTitle';
+import InputLabel from '../components/InputLabel';
 import InputForm from '../components/InputForm';
 
 function OwnedHouseInfo() {
@@ -13,7 +13,7 @@ function OwnedHouseInfo() {
     {label: '양도가액', inputMethod: 'money', placeholder: '양도가액을 입력해주세요.', required: true },
     {label: '취득가액', inputMethod: 'money', placeholder: '취득가액을 입력해주세요.', required: true},
     {label: '필요경비', inputMethod: 'money', placeholder: '필요경비를 입력해주세요.', required: true},
-    {label: '선순위 상속주택', inputMethod: 'oxChoice'},
+    {label: '선순위 상속주택', inputMethod: 'oxChoice', required:true},
   ];
 
 
@@ -26,7 +26,7 @@ function OwnedHouseInfo() {
             {inputFields.map((e, i) => (
               <Row className="mb-3">
                 <Col xs="auto">
-                  <InputLabel text={e.label} />
+                  <InputLabel text={e.label} required={e.required} />
                 </Col>
                 <Col>
                   <Form.Group key={i} className="mb-1">

@@ -1,5 +1,5 @@
 import { Row, Col, Form } from 'react-bootstrap';
-import InputLabel from '../components/FieldTitle';
+import InputLabel from '../components/InputLabel';
 import { useState } from 'react';
 
 function BasicInfo() {

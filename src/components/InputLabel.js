@@ -1,6 +1,6 @@
 import React from 'react';
 
-function InputLabel({text}) {
+function InputLabel({text, required}) {
   return (
     <div className="
       d-flex 
@@ -22,7 +22,7 @@ function InputLabel({text}) {
         textOverflow: 'ellipsis'
       }}
     >
-      {<span className="text-danger me-1">*</span>}
+      {required && <span className="text-danger me-1">*</span>}
       {text}
     </div>
   );
