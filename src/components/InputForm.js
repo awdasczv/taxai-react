@@ -1,6 +1,7 @@
 import DropDown from './DropDown';
 import TextFeild from './TextFeild';
 import OxChoice from './OxChoice';
+import DateFeild from './DateFeild';
 
 function InputForm({feild}) {
     
@@ -12,6 +13,9 @@ function InputForm({feild}) {
     }
     if(feild.inputMethod === 'oxChoice') {
         return <OxChoice label={feild.label} />
+    }
+    if(feild.inputMethod === 'date') {
+        return <DateFeild label={feild.label} />
     }
     return (
         <p>Invalid field type</p>

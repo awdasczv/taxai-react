@@ -22,7 +22,7 @@ let userInput = createSlice({
       if (index !== -1) {
         state.value.splice(index, 1)
       }else{
-        console.log('store.js : deleteUserInput : index not found')
+        console.log(`store.js : deleteUserInput : label ${action.payload.label} not found`)
       }
     },
     printUserInput: (state) => {
