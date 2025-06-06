@@ -3,23 +3,45 @@ import InputLabel from '../components/InputLabel';
 import InputForm from '../components/InputForm';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import CsvLoader from '../input_controller/CsvLoader';
-import SetConditionalInput from '../input_controller/SetConditionalInput';
+import { csvLoader, evaluateCondition } from '../input_controller/CsvLoader';
+import { useDispatch } from 'react-redux';
+import { initUserInput, setVisibleQuestions } from '../store';
 
 function OwnedHouseInfo() {
 
-  const [inputCommonFeild, setInputCommonFeild] = useState([]);
-  const [inputConditionalFeild, setInputConditionalFeild] = useState([]);
-  const selectedOptionStore = useSelector(state => state.userInput.value);
+  const answers = useSelector((state) => state.userInput.answers);
+  const visibilityRules = useSelector((state) => state.userInput.visibilityRules);
+  const visibleQuestions = useSelector((state) => state.userInput.visibleQuestions);
+  const questionObj = useSelector((state) => state.userInput.questionObj);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const loadCsvs = async() => {
-      const results = await CsvLoader();
-      setInputCommonFeild(results[0].data);
-      setInputConditionalFeild(results[1].data);
+      const results = await csvLoader();
+      dispatch(initUserInput(results));
     }
+
     loadCsvs();
-  }, []);
+  },[]);
+
+  useEffect(() => {
+    // 공통 질문들을 먼저 포함
+    const commonQuestions = Object.values(questionObj)
+      .filter(q => q.category === '공통')
+      .map(q => q.qid);
+    
+    const conditionalVisible = [];
+
+    visibilityRules.forEach((rule) => {
+      if (evaluateCondition(rule.condition, answers)) {
+        conditionalVisible.push(...rule.show);
+      }
+    });
+  
+    const uniqueVisible = [...new Set([...commonQuestions, ...conditionalVisible])];
+    dispatch(setVisibleQuestions(uniqueVisible));
+  }, [answers, visibilityRules, questionObj, dispatch]);
 
   return (
     <div>
@@ -27,33 +49,21 @@ function OwnedHouseInfo() {
         <p className="text-danger">*양도 예정 주택을 첫번째 주택으로 입력하세요.</p>
 
         <Form className="mb-4">
-          {inputCommonFeild.map((e, i) => (
-            <Row key={i} className="mb-3">
-              <Col xs="auto">
-                <InputLabel text={e.label} required={e.required} />
-              </Col>
-              <Col>
-                <Form.Group className="mb-1">
-                  <InputForm feild={e} />
-                </Form.Group>
-              </Col>
-            </Row>
-          ))}
-
-          {inputConditionalFeild.map((e, i) => (
-            SetConditionalInput({conditionalFeild: e, selectedOptionStore}) ? 
-            <Row key={i} className="mb-3">
-              <Col xs="auto">
-                <InputLabel text={e.label} required={e.required} />
-              </Col>
-              <Col>
-                <Form.Group className="mb-1">
-                  <InputForm feild={e} />
-                </Form.Group>
-              </Col>
-            </Row>
-            : null
-          ))} 
+          {visibleQuestions.map((e, i) => {
+            // console.log(`Question ID: ${e}, Answer: ${answers[e]}, Available answers keys:`, Object.keys(answers));
+            return (
+              <Row key={i} className="mb-3">
+                <Col xs="auto">
+                  <InputLabel text={questionObj[e]?.label} required={questionObj[e]?.required} />
+                </Col>
+                <Col>
+                  <Form.Group className="mb-1">
+                    <InputForm feild={questionObj[e]} answer={answers[e]} />
+                  </Form.Group>
+                </Col>
+              </Row>
+            );
+          })}
         </Form>
     </div>
   );
