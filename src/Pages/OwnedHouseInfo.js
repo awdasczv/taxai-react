@@ -3,8 +3,9 @@ import InputLabel from '../components/InputLabel';
 import InputForm from '../components/InputForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { csvLoader, evaluateCondition } from '../input_controller/CsvLoader';
+import { csvLoader } from '../input_controller/CsvLoader';
 import { initUserInput, setVisibleQuestions } from '../store';
+import { evaluateCondition } from '../utils/visibilityUtils';
 
 /**
  * 보유주택별 기본정보를 입력받는 페이지 컴포넌트
