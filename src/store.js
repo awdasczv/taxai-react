@@ -3,9 +3,9 @@ import {
   initAnswersFromQuestions,
   initVisibleQuestionsFromArray,
   convertQuestionsToObjectMap,
-  createLabelToQidMap,
-  createVisibilityRules
+  createLabelToQidMap
 } from './utils/storeHelpers'
+import { initVisibilityRules } from './utils/visibilityUtils'
 
 let userInput = createSlice({
   name: 'userInput',
@@ -49,7 +49,7 @@ let userInput = createSlice({
       };
 
       // 5. 가시성 규칙 생성 (조건에 따라 어떤 질문을 보여줄지 결정)
-      state.visibilityRules = createVisibilityRules(conditionalInput);
+      state.visibilityRules = initVisibilityRules(conditionalInput);
     },
 
     setAnswers: (state, action) => {

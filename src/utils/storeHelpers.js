@@ -53,27 +53,4 @@ export const createLabelToQidMap = (questionArray) => {
   return result;
 }
 
-/**
- * 조건부 입력 배열에서 가시성 규칙을 생성하는 헬퍼 함수
- * @param {Array} conditionalInputs - 조건부 질문 객체들의 배열
- * @returns {Array} 조건과 보여줄 질문들을 포함하는 가시성 규칙 배열
- */
-export const createVisibilityRules = (conditionalInputs) => {
-  const conditionMap = {};
-
-  conditionalInputs.forEach((item) => {
-    const conditionStr = item.condition; // 예: "q10301=재건축전 주택"
-
-    // 동일한 조건이 없으면 새로 생성
-    if (!conditionMap[conditionStr]) {
-      conditionMap[conditionStr] = {
-        condition: conditionStr, // 문자열로 저장
-        show: []
-      };
-    }
-    // 해당 조건에 보여줄 질문 추가
-    conditionMap[conditionStr].show.push(item.qid);
-  });
-  
-  return Object.values(conditionMap);
-} 
+ 
