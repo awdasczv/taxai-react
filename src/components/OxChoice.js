@@ -10,7 +10,6 @@ function OxChoice({label,qid,answer}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(`qid: ${qid}, answer: ${answer}`);
     setInputValue(answer || '');
   }, [answer]);
 

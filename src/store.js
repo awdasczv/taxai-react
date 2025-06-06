@@ -10,7 +10,6 @@ import {
 let userInput = createSlice({
   name: 'userInput',
   initialState: {
-    value: [],
     visibleQuestions: [],//화면에 보이는 Question들의 qid 목록
     answers:{},//key:qid, value:사용자 답변. ex) {q30601: '2년 미만'}
     questionObj:{},//key:qid, value:question 객체. ex) {q30601: {qid: 'q30601', label: '주택 건축 연도', type: 'text', required: true, options: []}}
@@ -53,10 +52,6 @@ let userInput = createSlice({
       state.visibilityRules = createVisibilityRules(conditionalInput);
     },
 
-    initAnswers: (state, action) => {
-      state.answers = action.payload
-    },
-
     setAnswers: (state, action) => {
       const { qid, value } = action.payload;
       state.answers[qid] = value;
@@ -69,25 +64,12 @@ let userInput = createSlice({
       console.log(JSON.stringify(state.answers))
     },
 
-
-    updateUserInput: (state, action) => {
-      const index = state.value.findIndex(item => item.label === action.payload.label)
-      if (index !== -1) {
-        state.value[index] = action.payload
-      }else{
-        state.value.push({label: action.payload.label, value: action.payload.value})
-      }
-    },
-
     
   }
 })
 
 export const { 
-  // addUserInput, 
   updateUserInput, 
-  // deleteUserInput, 
-  // printUserInput, 
   initAnswers, 
   printAnswers, 
   setAnswers, 
