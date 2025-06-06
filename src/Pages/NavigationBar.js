@@ -1,5 +1,4 @@
 import { Container, Row, Col, Nav, Button } from 'react-bootstrap';
-import logo from '../image/taxai-logo.svg';
 import './NavigationBar.css';
 
 /**
@@ -24,7 +23,7 @@ function NavigationBar() {
           
           {/* 로고 영역 */}
           <Col xs="auto">
-            <img src={logo} height="30" alt="TAXAI 로고" />
+            <img src="/img/taxai-logo.svg" height="30" alt="TAXAI 로고" />
           </Col>
 
           {/* 메인 네비게이션 영역 */}
