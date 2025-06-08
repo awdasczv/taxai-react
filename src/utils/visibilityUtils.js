@@ -48,16 +48,21 @@ function updateVisibleQuestions(answers, visibilityRules, dispatch) {
 /**
  * 조건 문자열을 평가하는 함수
  * @param {string} conditionStr - 평가할 조건 문자열 
- *   예: "q10301=재건축전 주택", "q10002-q10551<730", "q10501=승계분양권&q10002-q10504<730"
+ *   예: "q10301=재건축전 주택", "q10002-q10551<730", "q10501=승계분양권&q10002-q10504<730", "always"
  * @param {Object} answers - 현재 답변 상태 객체
  * @returns {boolean} 조건 만족 여부
  */
 function evaluateCondition(conditionStr, answers) {
+  // 빈 문자열이거나 'true', 'always'인 경우 항상 참
+  if (!conditionStr || conditionStr.trim() === '' || conditionStr.trim() === 'true' || conditionStr.trim() === 'always') {
+    return true;
+  }
+
   // AND 조건 처리 (& 연산자로 연결된 조건들)
   if (conditionStr.includes('&')) {
     const conditions = conditionStr.split('&').map(s => s.trim());
     // 모든 조건이 true여야 최종 true 반환
-    //재귀 함수
+    // 재귀 함수
     return conditions.every(condition => evaluateCondition(condition, answers));
   }
   
