@@ -6,7 +6,12 @@ import Papa from 'papaparse';
  */
 const csvLoader = async () => {
   // 로드할 CSV 파일 목록
-  const fileNames = ['input-controller-common.csv', 'input-controller-conditional.csv'];
+  const fileNames = [
+    'input-controller-common.csv',
+     'input-controller-conditional.csv',
+     'input-controller-acquisition.csv',
+    ];
+    
   const csvFolder = '/csv/';
   
   // 모든 CSV 파일을 병렬로 로드하고 파싱

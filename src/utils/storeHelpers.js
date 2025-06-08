@@ -1,7 +1,5 @@
-/**
- * Store 관련 헬퍼 함수들
- * Redux store의 userInput slice에서 사용되는 유틸리티 함수들
- */
+// Store 관련 헬퍼 함수들
+// Redux store의 userInput slice에서 사용되는 유틸리티 함수들
 
 /**
  * 질문 배열에서 answers 객체 초기화하는 헬퍼 함수
@@ -10,7 +8,9 @@
  */
 export const initAnswersFromQuestions = (questionArray) => {
   return questionArray.reduce((acc, item) => {
-    acc[item.qid] = '';
+    if(item.qid){
+      acc[item.qid] = '';
+    }
     return acc;
   }, {});
 }
@@ -22,7 +22,9 @@ export const initAnswersFromQuestions = (questionArray) => {
  */
 export const initVisibleQuestionsFromArray = (questionArray) => {
   return questionArray.reduce((acc, item) => {
-    acc.push(item.qid);
+    if(item.qid){
+      acc.push(item.qid);
+    }
     return acc;
   }, []);
 }
@@ -35,7 +37,9 @@ export const initVisibleQuestionsFromArray = (questionArray) => {
 export const convertQuestionsToObjectMap = (questionArray) => {
   const result = {};
   questionArray.forEach(item => {
-    result[item.qid] = item;
+    if(item.qid){
+      result[item.qid] = item;
+    }
   });
   return result;
 }
@@ -48,9 +52,9 @@ export const convertQuestionsToObjectMap = (questionArray) => {
 export const createLabelToQidMap = (questionArray) => {
   const result = {};
   questionArray.forEach(item => {
-    result[item.label] = item.qid;
+    if(item.label){
+      result[item.label] = item.qid;
+    }
   });
   return result;
 }
-
- 
