@@ -1,12 +1,24 @@
 import { Row, Col, Form } from 'react-bootstrap';
 import InputLabel from '../components/InputLabel';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAnswers } from '../store';
 
 /**
  * 기초정보 입력 컴포넌트
  * 사용자의 보유주택 수와 양도 예정일을 입력받는 폼
  */
 function BasicInfo() {
+  const [transferDate, setTransferDate] = useState('');
+  const dispatch = useDispatch();
+
+  // 날짜 변경 핸들러
+  // 양도예정일 qid: q10002
+  const handleDateChange = (e) => {
+    const newDate = e.target.value;
+    setTransferDate(newDate);
+    dispatch(setAnswers({ qid: 'q10002', value: newDate }));
+  };
   
   // 보유주택 수 선택 옵션 정의
   const houseOptions = [
@@ -53,7 +65,12 @@ function BasicInfo() {
             <InputLabel text="양도 예정일" />
           </Col>
           <Col>
-            <Form.Control type="date" style={{fontSize: '0.9rem'}} />
+            <Form.Control 
+              type="date" 
+              style={{fontSize: '0.9rem'}} 
+              value={transferDate}
+              onChange={handleDateChange}
+            />
           </Col>
         </Row>
         
