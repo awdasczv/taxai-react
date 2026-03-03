@@ -2,9 +2,9 @@ import './App.css';
 
 import React from "react";
 import { Container, Row, Col, Nav, Form, Button, InputGroup } from "react-bootstrap";
-import NavigationBar from './pages/NavigationBar';
-import BasicInfo from './pages/BasicInfo';
-import OwnedHouseInfo from './pages/OwnedHouseInfo';
+import NavigationBar from './Pages/NavigationBar';
+import BasicInfo from './Pages/BasicInfo';
+import OwnedHouseInfo from './Pages/OwnedHouseInfo';
 
 export default function App() {
   return (
