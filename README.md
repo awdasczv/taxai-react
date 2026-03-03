@@ -89,7 +89,7 @@ taxai-react/
 
 ```bash
 # 1. 저장소 클론
-git clone https://github.com/your-username/taxai-react.git
+git clone https://github.com/awdasczv/taxai-react.git
 
 # 2. 디렉터리 이동
 cd taxai-react
